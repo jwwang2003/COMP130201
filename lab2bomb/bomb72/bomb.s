@@ -461,7 +461,7 @@ Disassembly of section .text:
     1651:	78 0a                	js     165d <phase_2+0x32> # jump to 165d to trigger the bomb
 
     # condition, first arg cannot be 0
-    # 1, 2, 4, 7, 9, 12
+    # 1, 2, 4, 7, 11, 16
     1653:	48 89 e5             	mov    %rsp,%rbp # copies stack pointer to %rbp
     1656:	bb 01 00 00 00       	mov    $0x1,%ebx # this is the counter
 
@@ -505,7 +505,7 @@ Disassembly of section .text:
     169d:	f3 0f 1e fa          	endbr64
 
     # allocate space
-    16a1:	48 83 ec 18          	sub    $0x18,%rsp # 0x18 => 16 + 8 = 24, allocate 6 ints
+    16a1:	48 83 ec 18          	sub    $0x18,%rsp # 0x18 => 16 + 8 = 24, allocate space for 6 ints
     16a5:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     16ac:	00 00 
     16ae:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
