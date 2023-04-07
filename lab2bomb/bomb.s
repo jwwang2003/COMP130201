@@ -395,7 +395,7 @@ Disassembly of section .text:
   400f6a:	83 7c 24 08 07       	cmpl   $0x7,0x8(%rsp)   
   400f6f:	77 3c                	ja     400fad <phase_3+0x6a>  !# 无符号比较 第一个int > 0x7就爆炸,所以限制第一个输入在 [0,7]
   400f71:	8b 44 24 08          	mov    0x8(%rsp),%eax         !#  第一个int
-        !#0x402470 应该是一个数组的位置，这个数组中存的是跳转的位置，很可惜没有找到这个数组...应该是一个extern 
+        !# 0x402470 应该是一个数组的位置，这个数组中存的是跳转的位置，很可惜没有找到这个数组...应该是一个extern 
   400f75:	ff 24 c5 70 24 40 00 	jmpq   *0x402470(,%rax,8)     !# jmp 8 *%rax + 0x402470
   400f7c:	b8 cf 00 00 00       	mov    $0xcf,%eax             !# case 0
   400f81:	eb 3b                	jmp    400fbe <phase_3+0x7b>
