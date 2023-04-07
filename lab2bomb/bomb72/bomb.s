@@ -444,55 +444,87 @@ Disassembly of section .text:
     162b:	f3 0f 1e fa          	endbr64 
     162f:	55                   	push   %rbp
     1630:	53                   	push   %rbx
-    1631:	48 83 ec 28          	sub    $0x28,%rsp
+    # save %rbp and %rbx
+
+    1631:	48 83 ec 28          	sub    $0x28,%rsp # $0x28 => 40 base10, allocate 40 bytes of space on the memory
     1635:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     163c:	00 00 
     163e:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
-    1643:	31 c0                	xor    %eax,%eax
-    1645:	48 89 e6             	mov    %rsp,%rsi
+
+    1643:	31 c0                	xor    %eax,%eax # This instruction sets the value of the %eax register to 0
+    # note that eax is the return value register
+    1645:	48 89 e6             	mov    %rsp,%rsi # copies %rsp (stack pointer) into the %rsi register
+
     1648:	e8 df 07 00 00       	callq  1e2c <read_six_numbers>
-    164d:	83 3c 24 00          	cmpl   $0x0,(%rsp)
-    1651:	78 0a                	js     165d <phase_2+0x32>
-    1653:	48 89 e5             	mov    %rsp,%rbp
-    1656:	bb 01 00 00 00       	mov    $0x1,%ebx
-    165b:	eb 13                	jmp    1670 <phase_2+0x45>
+
+    164d:	83 3c 24 00          	cmpl   $0x0,(%rsp) # check if first arg is equal to 0
+    1651:	78 0a                	js     165d <phase_2+0x32> # jump to 165d to trigger the bomb
+
+    # condition, first arg cannot be 0
+    # 1, 2, 4, 7, 9, 12
+    1653:	48 89 e5             	mov    %rsp,%rbp # copies stack pointer to %rbp
+    1656:	bb 01 00 00 00       	mov    $0x1,%ebx # this is the counter
+
+    165b:	eb 13                	jmp    1670 <phase_2+0x45> # break effect, go to 1670
+
     165d:	e8 88 07 00 00       	callq  1dea <explode_bomb>
     1662:	eb ef                	jmp    1653 <phase_2+0x28>
+
     1664:	83 c3 01             	add    $0x1,%ebx
-    1667:	48 83 c5 04          	add    $0x4,%rbp
+    1667:	48 83 c5 04          	add    $0x4,%rbp # move the temp pointer back a full int
+
     166b:	83 fb 06             	cmp    $0x6,%ebx
-    166e:	74 11                	je     1681 <phase_2+0x56>
+    166e:	74 11                	je     1681 <phase_2+0x56> # if the value in %ebx is equal to 6
+
+    # break, starts here
     1670:	89 d8                	mov    %ebx,%eax
-    1672:	03 45 00             	add    0x0(%rbp),%eax
-    1675:	39 45 04             	cmp    %eax,0x4(%rbp)
-    1678:	74 ea                	je     1664 <phase_2+0x39>
+    1672:	03 45 00             	add    0x0(%rbp),%eax # add a number at current stack pointer loc to eax
+
+    1675:	39 45 04             	cmp    %eax,0x4(%rbp) # compare eax to the next int
+    1678:	74 ea                	je     1664 <phase_2+0x39> # if value in %eax and 0x4(%rpb) is the same, jump to 1664
+    # else the bomb would trigger
     167a:	e8 6b 07 00 00       	callq  1dea <explode_bomb>
     167f:	eb e3                	jmp    1664 <phase_2+0x39>
+
     1681:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
-    1686:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1686:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax 
     168d:	00 00 
-    168f:	75 07                	jne    1698 <phase_2+0x6d>
+    168f:	75 07                	jne    1698 <phase_2+0x6d> # jump if %fs:0x28 not equal to the vale in %rax
+    # stack overflow check?
+
     1691:	48 83 c4 28          	add    $0x28,%rsp
+
     1695:	5b                   	pop    %rbx
     1696:	5d                   	pop    %rbp
+    # restore %rbx and %rbp
+
     1697:	c3                   	retq   
     1698:	e8 d3 fb ff ff       	callq  1270 <__stack_chk_fail@plt>
 
 000000000000169d <phase_3>:
-    169d:	f3 0f 1e fa          	endbr64 
-    16a1:	48 83 ec 18          	sub    $0x18,%rsp
+    169d:	f3 0f 1e fa          	endbr64
+
+    # allocate space
+    16a1:	48 83 ec 18          	sub    $0x18,%rsp # 0x18 => 16 + 8 = 24, allocate 6 ints
     16a5:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     16ac:	00 00 
     16ae:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
-    16b3:	31 c0                	xor    %eax,%eax
-    16b5:	48 8d 4c 24 04       	lea    0x4(%rsp),%rcx
-    16ba:	48 89 e2             	mov    %rsp,%rdx
+
+    16b3:	31 c0                	xor    %eax,%eax # set %eax to 0
+
+    16b5:	48 8d 4c 24 04       	lea    0x4(%rsp),%rcx # second numer
+    16ba:	48 89 e2             	mov    %rsp,%rdx # first number
     16bd:	48 8d 35 49 1d 00 00 	lea    0x1d49(%rip),%rsi        # 340d <array.0+0x22d>
+    # 0x340d: "%d %d"
+    # moves 0x340d -> second arg
     16c4:	e8 47 fc ff ff       	callq  1310 <__isoc99_sscanf@plt>
+
     16c9:	83 f8 01             	cmp    $0x1,%eax
-    16cc:	7e 1a                	jle    16e8 <phase_3+0x4b>
+    16cc:	7e 1a                	jle    16e8 <phase_3+0x4b> # explode bomb is %eax is less or equal to 1
+    
     16ce:	83 3c 24 07          	cmpl   $0x7,(%rsp)
-    16d2:	77 65                	ja     1739 <phase_3+0x9c>
+    16d2:	77 65                	ja     1739 <phase_3+0x9c> # if (%rsp) is above 7 then explode bomb
+
     16d4:	8b 04 24             	mov    (%rsp),%eax
     16d7:	48 8d 15 e2 1a 00 00 	lea    0x1ae2(%rip),%rdx        # 31c0 <_IO_stdin_used+0x1c0>
     16de:	48 63 04 82          	movslq (%rdx,%rax,4),%rax
@@ -501,11 +533,14 @@ Disassembly of section .text:
     16e8:	e8 fd 06 00 00       	callq  1dea <explode_bomb>
     16ed:	eb df                	jmp    16ce <phase_3+0x31>
     16ef:	b8 40 00 00 00       	mov    $0x40,%eax
+    
     16f4:	39 44 24 04          	cmp    %eax,0x4(%rsp)
     16f8:	75 52                	jne    174c <phase_3+0xaf>
+
     16fa:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
     16ff:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1706:	00 00 
+
     1708:	75 49                	jne    1753 <phase_3+0xb6>
     170a:	48 83 c4 18          	add    $0x18,%rsp
     170e:	c3                   	retq   
@@ -1043,22 +1078,35 @@ Disassembly of section .text:
 
 0000000000001e2c <read_six_numbers>:
     1e2c:	f3 0f 1e fa          	endbr64 
-    1e30:	48 83 ec 08          	sub    $0x8,%rsp
+    1e30:	48 83 ec 08          	sub    $0x8,%rsp # minus 0x8 from stack pointer
+    
     1e34:	48 89 f2             	mov    %rsi,%rdx
     1e37:	48 8d 4e 04          	lea    0x4(%rsi),%rcx
-    1e3b:	48 8d 46 14          	lea    0x14(%rsi),%rax
-    1e3f:	50                   	push   %rax
-    1e40:	48 8d 46 10          	lea    0x10(%rsi),%rax
-    1e44:	50                   	push   %rax
+    1e3b:	48 8d 46 14          	lea    0x14(%rsi),%rax # 8th arg?
+
+    1e3f:	50                   	push   %rax # put rax onto the stack, stack inceases by 8
+    1e40:	48 8d 46 10          	lea    0x10(%rsi),%rax # 7th arg?
+    1e44:	50                   	push   %rax # put rax onto the stack again stack inceases by 8 again
+    # the stack now is 16 longer than before
+
     1e45:	4c 8d 4e 0c          	lea    0xc(%rsi),%r9
     1e49:	4c 8d 46 08          	lea    0x8(%rsi),%r8
     1e4d:	48 8d 35 ad 15 00 00 	lea    0x15ad(%rip),%rsi        # 3401 <array.0+0x221>
+
+    # 0x3402: "d %d %d %d %d %d"
     1e54:	b8 00 00 00 00       	mov    $0x0,%eax
     1e59:	e8 b2 f4 ff ff       	callq  1310 <__isoc99_sscanf@plt>
-    1e5e:	48 83 c4 10          	add    $0x10,%rsp
+
+    1e5e:	48 83 c4 10          	add    $0x10,%rsp # add 16 to stack pointer
+    # discards the information from the two pushes from before?
+
     1e62:	83 f8 05             	cmp    $0x5,%eax
-    1e65:	7e 05                	jle    1e6c <read_six_numbers+0x40>
-    1e67:	48 83 c4 08          	add    $0x8,%rsp
+    1e65:	7e 05                	jle    1e6c <read_six_numbers+0x40> # if the numbers read is less than 5
+    # jump to 0x1e6c to explode the bomb
+
+    1e67:	48 83 c4 08          	add    $0x8,%rsp # add 8 to stack pointer
+    # remove the memory allocated at the 1e30
+    
     1e6b:	c3                   	retq   
     1e6c:	e8 79 ff ff ff       	callq  1dea <explode_bomb>
 
