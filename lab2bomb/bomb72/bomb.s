@@ -546,25 +546,37 @@ Disassembly of section .text:
     1708:	75 49                	jne    1753 <phase_3+0xb6>
     170a:	48 83 c4 18          	add    $0x18,%rsp
     170e:	c3                   	retq   
+    
     170f:	b8 46 03 00 00       	mov    $0x346,%eax
     1714:	eb de                	jmp    16f4 <phase_3+0x57>
+
     1716:	b8 f9 02 00 00       	mov    $0x2f9,%eax
     171b:	eb d7                	jmp    16f4 <phase_3+0x57>
+
     171d:	b8 7c 03 00 00       	mov    $0x37c,%eax
     1722:	eb d0                	jmp    16f4 <phase_3+0x57>
+
     1724:	b8 14 03 00 00       	mov    $0x314,%eax
     1729:	eb c9                	jmp    16f4 <phase_3+0x57>
+
     172b:	b8 48 01 00 00       	mov    $0x148,%eax
     1730:	eb c2                	jmp    16f4 <phase_3+0x57>
+
     1732:	b8 60 01 00 00       	mov    $0x160,%eax
     1737:	eb bb                	jmp    16f4 <phase_3+0x57>
+
     1739:	e8 ac 06 00 00       	callq  1dea <explode_bomb>
+
     173e:	b8 00 00 00 00       	mov    $0x0,%eax
     1743:	eb af                	jmp    16f4 <phase_3+0x57>
+
     1745:	b8 92 03 00 00       	mov    $0x392,%eax
     174a:	eb a8                	jmp    16f4 <phase_3+0x57>
+
     174c:	e8 99 06 00 00       	callq  1dea <explode_bomb>
+
     1751:	eb a7                	jmp    16fa <phase_3+0x5d>
+
     1753:	e8 18 fb ff ff       	callq  1270 <__stack_chk_fail@plt>
 
 0000000000001758 <func4>:
