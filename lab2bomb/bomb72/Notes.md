@@ -8,3 +8,10 @@ x /s 0x3150
 
 Phase 2:
 
+1, 2, 4, 7, 11, 16
+
+correct input：
+1 2 4 7 11 16
+
+Phase 3:
+
