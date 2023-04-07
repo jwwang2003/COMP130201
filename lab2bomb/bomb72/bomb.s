@@ -580,27 +580,45 @@ Disassembly of section .text:
     1753:	e8 18 fb ff ff       	callq  1270 <__stack_chk_fail@plt>
 
 0000000000001758 <func4>:
-    1758:	f3 0f 1e fa          	endbr64 
+    1758:	f3 0f 1e fa          	endbr64
+    # rdi => input 1
+    # rsi => 0
+    # rdx => 14
+
+    # allocate 8 bytes of memory in the stack
     175c:	48 83 ec 08          	sub    $0x8,%rsp
     1760:	89 f0                	mov    %esi,%eax
+    # move second argment (0) to return value
+    # %eax is now 0
+
+    # move third arg(14) to ecx
     1762:	89 d1                	mov    %edx,%ecx
-    1764:	29 f1                	sub    %esi,%ecx
-    1766:	89 ce                	mov    %ecx,%esi
-    1768:	c1 ee 1f             	shr    $0x1f,%esi
-    176b:	01 ce                	add    %ecx,%esi
-    176d:	d1 fe                	sar    %esi
-    176f:	01 c6                	add    %eax,%esi
+    # %ecx is now 14
+
+    1764:	29 f1                	sub    %esi,%ecx # (%ecx) = 14 - 0
+    1766:	89 ce                	mov    %ecx,%esi # esi = ecx = 14
+    1768:	c1 ee 1f             	shr    $0x1f,%esi # unsigned right shift (14/2 = 7)
+    176b:	01 ce                	add    %ecx,%esi # (%esi) = 7 + 14 = 21
+    176d:	d1 fe                	sar    %esi # (%esi) >> 1
+    176f:	01 c6                	add    %eax,%esi # adds a 0
+
+    # compare the values in edi and esi (first arg & second arg)
     1771:	39 fe                	cmp    %edi,%esi
-    1773:	7f 0c                	jg     1781 <func4+0x29>
-    1775:	b8 00 00 00 00       	mov    $0x0,%eax
-    177a:	7c 13                	jl     178f <func4+0x37>
+    1773:	7f 0c                	jg     1781 <func4+0x29> # jump if $edi > $esi
+    #
+    1775:	b8 00 00 00 00       	mov    $0x0,%eax # return 0
+    177a:	7c 13                	jl     178f <func4+0x37> # jump if edi < esi
+
     177c:	48 83 c4 08          	add    $0x8,%rsp
-    1780:	c3                   	retq   
-    1781:	8d 56 ff             	lea    -0x1(%rsi),%edx
-    1784:	89 c6                	mov    %eax,%esi
+    1780:	c3                   	retq   # return
+
+    1781:	8d 56 ff             	lea    -0x1(%rsi),%edx # third arg?
+    1784:	89 c6                	mov    %eax,%esi # second arg becomes 0
     1786:	e8 cd ff ff ff       	callq  1758 <func4>
     178b:	01 c0                	add    %eax,%eax
     178d:	eb ed                	jmp    177c <func4+0x24>
+    # break?
+
     178f:	83 c6 01             	add    $0x1,%esi
     1792:	e8 c1 ff ff ff       	callq  1758 <func4>
     1797:	8d 44 00 01          	lea    0x1(%rax,%rax,1),%eax
@@ -608,29 +626,47 @@ Disassembly of section .text:
 
 000000000000179d <phase_4>:
     179d:	f3 0f 1e fa          	endbr64 
+    
+    # the beginning is very similar to phase 3
     17a1:	48 83 ec 18          	sub    $0x18,%rsp
     17a5:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     17ac:	00 00 
     17ae:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
-    17b3:	31 c0                	xor    %eax,%eax
-    17b5:	48 8d 4c 24 04       	lea    0x4(%rsp),%rcx
-    17ba:	48 89 e2             	mov    %rsp,%rdx
+
+    17b3:	31 c0                	xor    %eax,%eax # set return value %eax to 0
+
+    # read two ints
+    17b5:	48 8d 4c 24 04       	lea    0x4(%rsp),%rcx # second number
+    17ba:	48 89 e2             	mov    %rsp,%rdx # first number
     17bd:	48 8d 35 49 1c 00 00 	lea    0x1c49(%rip),%rsi        # 340d <array.0+0x22d>
+    # RSI is the second argument for sscanf, which is the template string
+    # RDI, the first agrument, is passed in from outside of phase_4
     17c4:	e8 47 fb ff ff       	callq  1310 <__isoc99_sscanf@plt>
+    # 0x349d: "%d %d"
+
     17c9:	83 f8 02             	cmp    $0x2,%eax
     17cc:	75 06                	jne    17d4 <phase_4+0x37>
+    # if sscanf read less than 2, explode bomb
     17ce:	83 3c 24 0e          	cmpl   $0xe,(%rsp)
     17d2:	76 05                	jbe    17d9 <phase_4+0x3c>
+    # jump if value in rsp is below or equal to 0xe (14)
     17d4:	e8 11 06 00 00       	callq  1dea <explode_bomb>
-    17d9:	ba 0e 00 00 00       	mov    $0xe,%edx
-    17de:	be 00 00 00 00       	mov    $0x0,%esi
-    17e3:	8b 3c 24             	mov    (%rsp),%edi
+
+    17d9:	ba 0e 00 00 00       	mov    $0xe,%edx # set third arg to 14
+    17de:	be 00 00 00 00       	mov    $0x0,%esi # set second arg to 0
+    17e3:	8b 3c 24             	mov    (%rsp),%edi # set first arg to first input
     17e6:	e8 6d ff ff ff       	callq  1758 <func4>
+
     17eb:	83 f8 05             	cmp    $0x5,%eax
     17ee:	75 07                	jne    17f7 <phase_4+0x5a>
+    # if return value of func4 is not equal to 5, explode bomb
     17f0:	83 7c 24 04 05       	cmpl   $0x5,0x4(%rsp)
     17f5:	74 05                	je     17fc <phase_4+0x5f>
+    # jump if second number is equal to 5, or else the bomb would explode
+
     17f7:	e8 ee 05 00 00       	callq  1dea <explode_bomb>
+
+    # in the safe!
     17fc:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
     1801:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1808:	00 00 
