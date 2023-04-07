@@ -525,14 +525,16 @@ Disassembly of section .text:
     16ce:	83 3c 24 07          	cmpl   $0x7,(%rsp)
     16d2:	77 65                	ja     1739 <phase_3+0x9c> # if (%rsp) is above 7 then explode bomb
 
-    16d4:	8b 04 24             	mov    (%rsp),%eax
+    16d4:	8b 04 24             	mov    (%rsp),%eax  # moves the value of %rsp into %eax
     16d7:	48 8d 15 e2 1a 00 00 	lea    0x1ae2(%rip),%rdx        # 31c0 <_IO_stdin_used+0x1c0>
+    # copy the memory address of 0x1ae2(%rip) aka 0x31c0 to the register %rdx
+    
     16de:	48 63 04 82          	movslq (%rdx,%rax,4),%rax
     16e2:	48 01 d0             	add    %rdx,%rax
     16e5:	3e ff e0             	notrack jmpq *%rax
     16e8:	e8 fd 06 00 00       	callq  1dea <explode_bomb>
     16ed:	eb df                	jmp    16ce <phase_3+0x31>
-    16ef:	b8 40 00 00 00       	mov    $0x40,%eax
+    16ef:	b8 40 00 00 00       	mov    $xx,%eax
     
     16f4:	39 44 24 04          	cmp    %eax,0x4(%rsp)
     16f8:	75 52                	jne    174c <phase_3+0xaf>
