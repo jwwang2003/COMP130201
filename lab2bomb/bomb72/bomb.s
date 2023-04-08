@@ -399,6 +399,7 @@ Disassembly of section .text:
     1573:	e8 c8 fc ff ff       	callq  1240 <puts@plt>
     1578:	e8 f4 08 00 00       	callq  1e71 <read_line>
     157d:	48 89 c7             	mov    %rax,%rdi
+    # move the input return value to first arg, into phase_ 
     1580:	e8 91 02 00 00       	callq  1816 <phase_5>
     1585:	e8 22 0a 00 00       	callq  1fac <phase_defused>
     158a:	48 8d 3d d9 1a 00 00 	lea    0x1ad9(%rip),%rdi        # 306a <_IO_stdin_used+0x6a>
@@ -677,25 +678,37 @@ Disassembly of section .text:
 
 0000000000001816 <phase_5>:
     1816:	f3 0f 1e fa          	endbr64 
+
+    # RBX in stack (callee saved)
+    # move value in rdi (first arg) into rbx
     181a:	53                   	push   %rbx
-    181b:	48 89 fb             	mov    %rdi,%rbx
+    181b:	48 89 fb             	mov    %rdi,%rbx # save value in rdi
+
     181e:	e8 cd 02 00 00       	callq  1af0 <string_length>
+
     1823:	83 f8 06             	cmp    $0x6,%eax
-    1826:	75 2c                	jne    1854 <phase_5+0x3e>
-    1828:	48 89 d8             	mov    %rbx,%rax
-    182b:	48 8d 7b 06          	lea    0x6(%rbx),%rdi
-    182f:	b9 00 00 00 00       	mov    $0x0,%ecx
+    1826:	75 2c                	jne    1854 <phase_5+0x3e> # if string length is not equal to 6, explode bomb 
+
+    1828:	48 89 d8             	mov    %rbx,%rax # restore value in rdi to rax (return val）
+    182b:	48 8d 7b 06          	lea    0x6(%rbx),%rdi # Calculates the address of the null-terminated string, which is located 6 bytes after the address in the RBX register, and stores it in the RDI register
+    182f:	b9 00 00 00 00       	mov    $0x0,%ecx # Clears the ECX register (sets it to 0)
     1834:	48 8d 35 a5 19 00 00 	lea    0x19a5(%rip),%rsi        # 31e0 <array.0>
-    183b:	0f b6 10             	movzbl (%rax),%edx
-    183e:	83 e2 0f             	and    $0xf,%edx
-    1841:	03 0c 96             	add    (%rsi,%rdx,4),%ecx
+    # Calculates the address of an array (named "array") and stores it in the RSI register
+
+    183b:	0f b6 10             	movzbl (%rax),%edx  # load one character at a time
+    # zero-extends it to a 32-bit value, and stores it in the EDX register
+    183e:	83 e2 0f             	and    $0xf,%edx    # bitwise and, only keep the first byte of info
+    1841:	03 0c 96             	add    (%rsi,%rdx,4),%ecx # ecx += (rsi + rdx*4)
     1844:	48 83 c0 01          	add    $0x1,%rax
     1848:	48 39 f8             	cmp    %rdi,%rax
+    # repeats until the end of string is reached
     184b:	75 ee                	jne    183b <phase_5+0x25>
-    184d:	83 f9 2a             	cmp    $0x2a,%ecx
+
+    184d:	83 f9 2a             	cmp    $0x2a,%ecx # 0x2a => 42
     1850:	75 09                	jne    185b <phase_5+0x45>
     1852:	5b                   	pop    %rbx
     1853:	c3                   	retq   
+
     1854:	e8 91 05 00 00       	callq  1dea <explode_bomb>
     1859:	eb cd                	jmp    1828 <phase_5+0x12>
     185b:	e8 8a 05 00 00       	callq  1dea <explode_bomb>
@@ -703,34 +716,52 @@ Disassembly of section .text:
 
 0000000000001862 <phase_6>:
     1862:	f3 0f 1e fa          	endbr64 
+
+    # user input at %rdi
     1866:	41 57                	push   %r15
     1868:	41 56                	push   %r14
     186a:	41 55                	push   %r13
     186c:	41 54                	push   %r12
     186e:	55                   	push   %rbp
     186f:	53                   	push   %rbx
+    # save all callee saved registers
+
+    # allocate 0x68 bytes of memory (104 bytes)
     1870:	48 83 ec 68          	sub    $0x68,%rsp
     1874:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     187b:	00 00 
     187d:	48 89 44 24 58       	mov    %rax,0x58(%rsp)
-    1882:	31 c0                	xor    %eax,%eax
-    1884:	49 89 e6             	mov    %rsp,%r14
-    1887:	4c 89 f6             	mov    %r14,%rsi
+
+    1882:	31 c0                	xor    %eax,%eax # set eax (return val) to 0
+
+    1884:	49 89 e6             	mov    %rsp,%r14 # save current stack pointer to r14
+    1887:	4c 89 f6             	mov    %r14,%rsi # pass stack pointer to second arg
     188a:	e8 9d 05 00 00       	callq  1e2c <read_six_numbers>
+    # the pointer to six numbers is stored in the stack =
+    # r14 and rsi point to the same position in the stack
+
+    # copy value from r14 to r12
     188f:	4d 89 f4             	mov    %r14,%r12
-    1892:	41 bf 01 00 00 00    	mov    $0x1,%r15d
-    1898:	49 89 e5             	mov    %rsp,%r13
+    1892:	41 bf 01 00 00 00    	mov    $0x1,%r15d # move 0x1 into lower 32-bits
+    1898:	49 89 e5             	mov    %rsp,%r13 # move current stack pointer to r13
+
+    # R13, R14, and RSI both point to the same position in the stack
+    # stack pointer loc is also saved in R13
+
     189b:	e9 c1 00 00 00       	jmpq   1961 <phase_6+0xff>
     18a0:	e8 45 05 00 00       	callq  1dea <explode_bomb>
     18a5:	e9 c9 00 00 00       	jmpq   1973 <phase_6+0x111>
+
     18aa:	48 83 c3 01          	add    $0x1,%rbx
     18ae:	83 fb 05             	cmp    $0x5,%ebx
     18b1:	0f 8f a2 00 00 00    	jg     1959 <phase_6+0xf7>
-    18b7:	41 8b 44 9d 00       	mov    0x0(%r13,%rbx,4),%eax
+
+    18b7:	41 8b 44 9d 00       	mov    0x0(%r13,%rbx,4),%eax    # r13(base) + rbx(index) * 4
     18bc:	39 45 00             	cmp    %eax,0x0(%rbp)
-    18bf:	75 e9                	jne    18aa <phase_6+0x48>
+    18bf:	75 e9                	jne    18aa <phase_6+0x48> # if val in rbp is not equal to val in eax, jump, else explode
     18c1:	e8 24 05 00 00       	callq  1dea <explode_bomb>
     18c6:	eb e2                	jmp    18aa <phase_6+0x48>
+
     18c8:	49 8d 4c 24 18       	lea    0x18(%r12),%rcx
     18cd:	ba 07 00 00 00       	mov    $0x7,%edx
     18d2:	89 d0                	mov    %edx,%eax
@@ -740,6 +771,7 @@ Disassembly of section .text:
     18e0:	4c 39 e1             	cmp    %r12,%rcx
     18e3:	75 ed                	jne    18d2 <phase_6+0x70>
     18e5:	be 00 00 00 00       	mov    $0x0,%esi
+    
     18ea:	8b 0c b4             	mov    (%rsp,%rsi,4),%ecx
     18ed:	b8 01 00 00 00       	mov    $0x1,%eax
     18f2:	48 8d 15 37 39 00 00 	lea    0x3937(%rip),%rdx        # 5230 <node1>
@@ -753,6 +785,7 @@ Disassembly of section .text:
     190e:	48 83 c6 01          	add    $0x1,%rsi
     1912:	48 83 fe 06          	cmp    $0x6,%rsi
     1916:	75 d2                	jne    18ea <phase_6+0x88>
+
     1918:	48 8b 5c 24 20       	mov    0x20(%rsp),%rbx
     191d:	48 8b 44 24 28       	mov    0x28(%rsp),%rax
     1922:	48 89 43 08          	mov    %rax,0x8(%rbx)
@@ -768,30 +801,40 @@ Disassembly of section .text:
     1951:	00 
     1952:	bd 05 00 00 00       	mov    $0x5,%ebp
     1957:	eb 35                	jmp    198e <phase_6+0x12c>
+
     1959:	49 83 c7 01          	add    $0x1,%r15
     195d:	49 83 c6 04          	add    $0x4,%r14
-    1961:	4c 89 f5             	mov    %r14,%rbp
-    1964:	41 8b 06             	mov    (%r14),%eax
-    1967:	83 e8 01             	sub    $0x1,%eax
+
+    1961:	4c 89 f5             	mov    %r14,%rbp    # save current stack pos to base pointer
+    1964:	41 8b 06             	mov    (%r14),%eax  # load value in R14 to eax
+    1967:	83 e8 01             	sub    $0x1,%eax    # minus 1 from eax
     196a:	83 f8 05             	cmp    $0x5,%eax
-    196d:	0f 87 2d ff ff ff    	ja     18a0 <phase_6+0x3e>
+    196d:	0f 87 2d ff ff ff    	ja     18a0 <phase_6+0x3e> # if eax is above 5, explode bomb
+    # else
     1973:	41 83 ff 05          	cmp    $0x5,%r15d
-    1977:	0f 8f 4b ff ff ff    	jg     18c8 <phase_6+0x66>
+    1977:	0f 8f 4b ff ff ff    	jg     18c8 <phase_6+0x66> # if r15d value is greater than 5, jump to instruction 0x18c8
+
     197d:	4c 89 fb             	mov    %r15,%rbx
-    1980:	e9 32 ff ff ff       	jmpq   18b7 <phase_6+0x55>
+    1980:	e9 32 ff ff ff       	jmpq   18b7 <phase_6+0x55> # loop
+
+    # loop?
     1985:	48 8b 5b 08          	mov    0x8(%rbx),%rbx
     1989:	83 ed 01             	sub    $0x1,%ebp
-    198c:	74 11                	je     199f <phase_6+0x13d>
+    198c:	74 11                	je     199f <phase_6+0x13d> # exit if flag ZF
+
     198e:	48 8b 43 08          	mov    0x8(%rbx),%rax
     1992:	8b 00                	mov    (%rax),%eax
     1994:	39 03                	cmp    %eax,(%rbx)
     1996:	7d ed                	jge    1985 <phase_6+0x123>
     1998:	e8 4d 04 00 00       	callq  1dea <explode_bomb>
     199d:	eb e6                	jmp    1985 <phase_6+0x123>
+
     199f:	48 8b 44 24 58       	mov    0x58(%rsp),%rax
     19a4:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     19ab:	00 00 
-    19ad:	75 0f                	jne    19be <phase_6+0x15c>
+
+    # function return
+    19ad:	75 0f                	jne    19be <phase_6+0x15c> # stack overflow guard
     19af:	48 83 c4 68          	add    $0x68,%rsp
     19b3:	5b                   	pop    %rbx
     19b4:	5d                   	pop    %rbp
@@ -799,6 +842,7 @@ Disassembly of section .text:
     19b7:	41 5d                	pop    %r13
     19b9:	41 5e                	pop    %r14
     19bb:	41 5f                	pop    %r15
+    # restore all callee saved registers and return
     19bd:	c3                   	retq   
     19be:	e8 ad f8 ff ff       	callq  1270 <__stack_chk_fail@plt>
 
@@ -889,12 +933,15 @@ Disassembly of section .text:
 
 0000000000001af0 <string_length>:
     1af0:	f3 0f 1e fa          	endbr64 
+
+    # if rdi is 0, jump and return 0
     1af4:	80 3f 00             	cmpb   $0x0,(%rdi)
     1af7:	74 12                	je     1b0b <string_length+0x1b>
-    1af9:	b8 00 00 00 00       	mov    $0x0,%eax
-    1afe:	48 83 c7 01          	add    $0x1,%rdi
-    1b02:	83 c0 01             	add    $0x1,%eax
-    1b05:	80 3f 00             	cmpb   $0x0,(%rdi)
+    # else, continue
+    1af9:	b8 00 00 00 00       	mov    $0x0,%eax # set return value to 0
+    1afe:	48 83 c7 01          	add    $0x1,%rdi # add 1 to first arg
+    1b02:	83 c0 01             	add    $0x1,%eax # add 1 to return val
+    1b05:	80 3f 00             	cmpb   $0x0,(%rdi) # check if rdi is equal to 0 
     1b08:	75 f4                	jne    1afe <string_length+0xe>
     1b0a:	c3                   	retq   
     1b0b:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -1267,6 +1314,7 @@ Disassembly of section .text:
     2034:	eb a1                	jmp    1fd7 <phase_defused+0x2b>
     2036:	48 8d 7c 24 10       	lea    0x10(%rsp),%rdi
     203b:	48 8d 35 1e 14 00 00 	lea    0x141e(%rip),%rsi        # 3460 <array.0+0x280>
+    # 0x3460: "DrEvil"
     2042:	e8 ca fa ff ff       	callq  1b11 <strings_not_equal>
     2047:	85 c0                	test   %eax,%eax
     2049:	75 d1                	jne    201c <phase_defused+0x70>
