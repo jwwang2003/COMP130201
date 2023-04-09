@@ -1,0 +1,5 @@
+Reading symbols from bomb...
++test
+Undefined command: "test".  Try "help".
+warning: Error detected on fd 0
+error detected on stdin
