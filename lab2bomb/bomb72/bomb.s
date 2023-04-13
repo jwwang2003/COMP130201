@@ -850,22 +850,29 @@ Disassembly of section .text:
     19c3:	f3 0f 1e fa          	endbr64 
     19c7:	48 85 ff             	test   %rdi,%rdi
     19ca:	74 32                	je     19fe <fun7+0x3b>
+
     19cc:	48 83 ec 08          	sub    $0x8,%rsp
     19d0:	8b 17                	mov    (%rdi),%edx
     19d2:	39 f2                	cmp    %esi,%edx
     19d4:	7f 0c                	jg     19e2 <fun7+0x1f>
+
     19d6:	b8 00 00 00 00       	mov    $0x0,%eax
     19db:	75 12                	jne    19ef <fun7+0x2c>
+
+    ## END
     19dd:	48 83 c4 08          	add    $0x8,%rsp
     19e1:	c3                   	retq   
+
     19e2:	48 8b 7f 08          	mov    0x8(%rdi),%rdi
     19e6:	e8 d8 ff ff ff       	callq  19c3 <fun7>
     19eb:	01 c0                	add    %eax,%eax
     19ed:	eb ee                	jmp    19dd <fun7+0x1a>
+
     19ef:	48 8b 7f 10          	mov    0x10(%rdi),%rdi
     19f3:	e8 cb ff ff ff       	callq  19c3 <fun7>
     19f8:	8d 44 00 01          	lea    0x1(%rax,%rax,1),%eax
     19fc:	eb df                	jmp    19dd <fun7+0x1a>
+
     19fe:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
     1a03:	c3                   	retq   
 
@@ -874,18 +881,21 @@ Disassembly of section .text:
     1a08:	53                   	push   %rbx
     1a09:	e8 63 04 00 00       	callq  1e71 <read_line>
     1a0e:	48 89 c7             	mov    %rax,%rdi
-    1a11:	ba 0a 00 00 00       	mov    $0xa,%edx
+    1a11:	ba 0a 00 00 00       	mov    $0xa,%edx # third arg, edx = 10
     1a16:	be 00 00 00 00       	mov    $0x0,%esi
     1a1b:	e8 d0 f8 ff ff       	callq  12f0 <strtol@plt>
     1a20:	48 89 c3             	mov    %rax,%rbx
-    1a23:	8d 40 ff             	lea    -0x1(%rax),%eax
+    1a23:	8d 40 ff             	lea    -0x1(%rax),%eax # minus 1 from eax
     1a26:	3d e8 03 00 00       	cmp    $0x3e8,%eax
     1a2b:	77 26                	ja     1a53 <secret_phase+0x4f>
-    1a2d:	89 de                	mov    %ebx,%esi
-    1a2f:	48 8d 3d 1a 37 00 00 	lea    0x371a(%rip),%rdi        # 5150 <n1>
+    1a2d:	89 de                	mov    %ebx,%esi # second arg
+    1a2f:	48 8d 3d 1a 37 00 00 	lea    0x371a(%rip),%rdi        # 5150 <n1> first arg, node root
+
+    # fun(node root, esi, edx)
     1a36:	e8 88 ff ff ff       	callq  19c3 <fun7>
-    1a3b:	83 f8 02             	cmp    $0x2,%eax
+    1a3b:	83 f8 02             	cmp    $0x2,%eax # fun7 return 2
     1a3e:	75 1a                	jne    1a5a <secret_phase+0x56>
+
     1a40:	48 8d 3d 41 17 00 00 	lea    0x1741(%rip),%rdi        # 3188 <_IO_stdin_used+0x188>
     1a47:	e8 f4 f7 ff ff       	callq  1240 <puts@plt>
     1a4c:	e8 5b 05 00 00       	callq  1fac <phase_defused>

@@ -3,3 +3,154 @@ Reading symbols from bomb...
 Undefined command: "test".  Try "help".
 warning: Error detected on fd 0
 error detected on stdin
++define hook-next
+Reading symbols from bomb...
++quit
++define hook-next
+Reading symbols from bomb...
++quit
++define hook-next
+Reading symbols from bomb...
++define hook-next
+Reading symbols from bomb...
++tty /dev/pts/13
++break explode_bomb
+Breakpoint 1 at 0x40143a
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
++define hook-next
+Reading symbols from bomb...
++tty /dev/pts/19
++break explode_bomb
+Breakpoint 1 at 0x40143a
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9e992 in __GI___libc_read (fd=0, buf=0x6046b0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9e992 in __GI___libc_read (fd=0, buf=0x6046b0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++quit
++define hook-next
+bobm: No such file or directory.
++quit
++define hook-next
+bobm: No such file or directory.
++qui
++define hook-next
+Reading symbols from bomb...
++run ans
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 18726) exited normally]
++tty /dev/pts/19
++run ans
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb ans
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 18774) exited normally]
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb ans
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 18952) exited normally]
++quit
++define hook-next
+Reading symbols from bomb...
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9e992 in __GI___libc_read (fd=0, buf=0x6046b0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++quit
++define hook-next
+Reading symbols from bomb...
++tty /dev/pts/19
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9e992 in __GI___libc_read (fd=0, buf=0x6046b0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++inferior-tty /dev/pts/19
+Undefined command: "inferior-tty".  Try "help".
++quit
++set inferior-tty /dev/pts/19
++define hook-next
+Reading symbols from bomb...
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9e992 in __GI___libc_read (fd=0, buf=0x6046b0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++new-ui console /dev/pts/6
+opening terminal failed: No such file or directory.
++new-ui console /dev/pts/19
+New UI allocated
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
++set inferior-tty /dev/pts/19
++define hook-next
+bobm: No such file or directory.
++quit
++set inferior-tty /dev/pts/19
++define hook-next
+Reading symbols from bomb...
++new-ui console /dev/pts/19
+New UI allocated
++test
+Undefined command: "test".  Try "help".
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+warning: GDB: Failed to set controlling terminal: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
++define hook-next
+Reading symbols from bomb...
++new-ui console /dev/pts/19
+New UI allocated
++run
+Starting program: /home/ecs-user/COMP130201/lab2bomb/bomb 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9e992 in __GI___libc_read (fd=0, buf=0x6046b0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++≈≈≈ç≈ç≈çnew-ui console /dev/pts/6new-ui console /dev/pts/6
+Undefined command: "".  Try "help".
++dfsddasd
+Undefined command: "dfsddasd".  Try "help".
++dfsddasd
+Undefined command: "dfsddasd".  Try "help".
++dfsddasd
+Undefined command: "dfsddasd".  Try "help".
++dfsddasd
+Undefined command: "dfsddasd".  Try "help".
++define hook-next
+Reading symbols from bomb...
++quit
