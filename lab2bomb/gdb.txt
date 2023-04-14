@@ -154,3 +154,12 @@ Undefined command: "dfsddasd".  Try "help".
 +define hook-next
 Reading symbols from bomb...
 +quit
++define hook-next
+Reading symbols from bomb...
++layout asm
++x /100wx 0x5140
+0x5140:	Cannot access memory at address 0x5140
+Quit
++x /100wx 0x5140
+0x5140:	Cannot access memory at address 0x5140
++quit
