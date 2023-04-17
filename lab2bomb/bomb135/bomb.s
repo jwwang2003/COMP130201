@@ -629,8 +629,10 @@ Disassembly of section .text:
     18a3:	48 83 c4 10          	add    $0x10,%rsp
     18a7:	5b                   	pop    %rbx
     18a8:	c3                   	retq   
+    
     18a9:	e8 5d 05 00 00       	callq  1e0b <explode_bomb>
     18ae:	eb a4                	jmp    1854 <phase_5+0x26>
+
     18b0:	e8 56 05 00 00       	callq  1e0b <explode_bomb>
     18b5:	eb dc                	jmp    1893 <phase_5+0x65>
     18b7:	e8 b4 f9 ff ff       	callq  1270 <__stack_chk_fail@plt>

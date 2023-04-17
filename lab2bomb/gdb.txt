@@ -163,3 +163,9 @@ Quit
 +x /100wx 0x5140
 0x5140:	Cannot access memory at address 0x5140
 +quit
+Reading symbols from bomb...
++layout asm
+Quit
++quit
+Reading symbols from bomb...
++quit

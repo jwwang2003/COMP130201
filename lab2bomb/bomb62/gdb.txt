@@ -1,0 +1,1130 @@
+Reading symbols from bomb...
++break explode_bomb
+Breakpoint 1 at 0x1dde
++x /s 0x3150
+0x3150:	"For NASA, space is still a high priority."
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 13605) killed]
++refrehs
+Undefined command: "refrehs".  Try "help".
++refresh
++quit
+Reading symbols from bomb...
++layout asm
++break explode_bomb
+Breakpoint 1 at 0x1dde
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 15904) killed]
++refrehs
+Undefined command: "refrehs".  Try "help".
++refresh
++quit
+Reading symbols from bomb...
++break explode_bomb
+Breakpoint 1 at 0x1dde
++x /10wx 0x340d
+0x340d:	0x25206425	0x72450064	0x3a726f72	0x65725020
+0x341d:	0x7574616d	0x45206572	0x6f20464f	0x7473206e
+0x342d:	0x006e6964	0x44415247
++x/s 0x340d
+0x340d:	"%d %d"
++x /10wx 0x31c0
+0x31c0:	0xffffe535	0xffffe583	0xffffe58a	0xffffe591
+0x31d0:	0xffffe598	0xffffe59f	0xffffe5a6	0xffffe5ad
+0x31e0 <array.0>:	0x00000002	0x0000000a
++x /w 0xca6a
+0xca6a:	Cannot access memory at address 0xca6a
++layou tasm
+Undefined layout command: "tasm".  Try "help layout".
++layout asm
++break explode_bomb
+Note: breakpoint 1 also set at pc 0x1dde.
+Breakpoint 2 at 0x1dde
++break phase_3
+Breakpoint 3 at 0x169f
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 3, 0x000055555555569f in phase_3 ()
++refrehs
+Undefined command: "refrehs".  Try "help".
++si
+0x00005555555556a3 in phase_3 ()
++si
+0x00005555555556a7 in phase_3 ()
++si
+0x00005555555556b0 in phase_3 ()
++si
+0x00005555555556b5 in phase_3 ()
++si
+0x00005555555556b7 in phase_3 ()
++si
+0x00005555555556bc in phase_3 ()
++si
+0x00005555555556bf in phase_3 ()
++si
+0x00005555555556c6 in phase_3 ()
++ni
+0x00005555555556cb in phase_3 ()
++ni
+0x00005555555556ce in phase_3 ()
++ni
+0x00005555555556d0 in phase_3 ()
++ni
+0x00005555555556d4 in phase_3 ()
++ni
+0x00005555555556da in phase_3 ()
++ni
+0x00005555555556dd in phase_3 ()
++ni
+0x00005555555556e4 in phase_3 ()
++ni
+0x00005555555556e8 in phase_3 ()
++ni
+0x00005555555556eb in phase_3 ()
++info reg rax
+rax            0x55555555574a      93824992237386
++x /w 0x55555555574a
+0x55555555574a <phase_3+171>:	0x000000b8
++refresh
++si
+0x000055555555574a in phase_3 ()
++kill
+[Inferior 1 (process 21641) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 3, 0x000055555555569f in phase_3 ()
++refresh
++si
+0x00005555555556a3 in phase_3 ()
++si
+0x00005555555556a7 in phase_3 ()
++si
+0x00005555555556b0 in phase_3 ()
++si
+0x00005555555556b5 in phase_3 ()
++si
+0x00005555555556b7 in phase_3 ()
++si
+0x00005555555556bc in phase_3 ()
++si
+0x00005555555556bf in phase_3 ()
++si
+0x00005555555556c6 in phase_3 ()
++ni
+0x00005555555556cb in phase_3 ()
++ni
+0x00005555555556ce in phase_3 ()
++si
+0x00005555555556d0 in phase_3 ()
++si
+0x00005555555556d4 in phase_3 ()
++si
+0x00005555555556da in phase_3 ()
++si
+0x00005555555556dd in phase_3 ()
++si
+0x00005555555556e4 in phase_3 ()
++si
+0x00005555555556e8 in phase_3 ()
++si
+0x00005555555556eb in phase_3 ()
++si
+0x0000555555555743 in phase_3 ()
++kill
+[Inferior 1 (process 22166) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 3, 0x000055555555569f in phase_3 ()
++refresh
++si
+0x00005555555556a3 in phase_3 ()
++si
+0x00005555555556a7 in phase_3 ()
++si
+0x00005555555556b0 in phase_3 ()
++si
+0x00005555555556b5 in phase_3 ()
++si
+0x00005555555556b7 in phase_3 ()
++si
+0x00005555555556bc in phase_3 ()
++si
+0x00005555555556bf in phase_3 ()
++si
+0x00005555555556c6 in phase_3 ()
++ni
+0x00005555555556cb in phase_3 ()
++ni
+0x00005555555556ce in phase_3 ()
++si
+0x00005555555556d0 in phase_3 ()
++si
+0x00005555555556d4 in phase_3 ()
++si
+0x00005555555556da in phase_3 ()
++si
+0x00005555555556dd in phase_3 ()
++si
+0x00005555555556e4 in phase_3 ()
++si
+0x00005555555556e8 in phase_3 ()
++si
+0x00005555555556eb in phase_3 ()
++si
+0x00005555555556f5 in phase_3 ()
++si
+0x00005555555556fa in phase_3 ()
++si
+0x00005555555556ff in phase_3 ()
++si
+0x0000555555555704 in phase_3 ()
++si
+0x0000555555555709 in phase_3 ()
++si
+0x000055555555570e in phase_3 ()
++si
+0x0000555555555713 in phase_3 ()
++si
+0x0000555555555718 in phase_3 ()
++si
+0x000055555555571d in phase_3 ()
++si
+0x0000555555555721 in phase_3 ()
++si
+0x0000555555555723 in phase_3 ()
++info reg eax
+eax            0x65                101
++kill
+[Inferior 1 (process 22725) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 3, 0x000055555555569f in phase_3 ()
++refresh
++si
+0x00005555555556a3 in phase_3 ()
++si
+0x00005555555556a7 in phase_3 ()
++si
+0x00005555555556b0 in phase_3 ()
++si
+0x00005555555556b5 in phase_3 ()
++si
+0x00005555555556b7 in phase_3 ()
++si
+0x00005555555556bc in phase_3 ()
++si
+0x00005555555556bf in phase_3 ()
++si
+0x00005555555556c6 in phase_3 ()
++ni
+0x00005555555556cb in phase_3 ()
++si
+0x00005555555556ce in phase_3 ()
++si
+0x00005555555556d0 in phase_3 ()
++si
+0x00005555555556d4 in phase_3 ()
++si
+0x00005555555556da in phase_3 ()
++si
+0x00005555555556dd in phase_3 ()
++si
+0x00005555555556e4 in phase_3 ()
++si
+0x00005555555556e8 in phase_3 ()
++si
+0x00005555555556eb in phase_3 ()
++si
+0x00005555555556f5 in phase_3 ()
++si
+0x00005555555556fa in phase_3 ()
++si
+0x00005555555556ff in phase_3 ()
++si
+0x0000555555555704 in phase_3 ()
++si
+0x0000555555555709 in phase_3 ()
++si
+0x000055555555570e in phase_3 ()
++si
+0x0000555555555713 in phase_3 ()
++si
+0x0000555555555718 in phase_3 ()
++si
+0x000055555555571d in phase_3 ()
++si
+0x0000555555555721 in phase_3 ()
++si
+0x0000555555555723 in phase_3 ()
++si
+0x0000555555555727 in phase_3 ()
++si
+0x000055555555572e in phase_3 ()
++si
+0x0000555555555733 in phase_3 ()
++si
+0x000055555555573c in phase_3 ()
++continue
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 23430) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 3, 0x000055555555569f in phase_3 ()
++kill
+[Inferior 1 (process 23617) killed]
++quit
+Reading symbols from bomb...
++break explode_bomb
+Breakpoint 1 at 0x1dde
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 23704) killed]
++quit
+Reading symbols from bomb...
++break explode_bobm
+Function "explode_bobm" not defined.
++break explode_bomb
+Breakpoint 1 at 0x1dde
++break phase_4
+Breakpoint 2 at 0x17ca
++x /s 0x340d
+0x340d:	"%d %d"
++info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000001dde <explode_bomb>
+2       breakpoint     keep y   0x00000000000017ca <phase_4>
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++layout ans
+Undefined layout command: "ans".  Try "help layout".
++layout asm
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++info reg rdi
+rdi            0xa                 10
++info reg rsi
+rsi            0x0                 0
++info reg rdx
+rdx            0xe                 14
++si
+0x0000555555555785 in func4 ()
++si
+0x0000555555555789 in func4 ()
++si
+0x000055555555578d in func4 ()
++si
+0x000055555555578f in func4 ()
++si
+0x0000555555555791 in func4 ()
++si
+0x0000555555555793 in func4 ()
++si
+0x0000555555555795 in func4 ()
++si
+0x0000555555555798 in func4 ()
++si
+0x000055555555579a in func4 ()
++si
+0x000055555555579c in func4 ()
++si
+0x000055555555579e in func4 ()
++si
+0x00005555555557a0 in func4 ()
++si
+0x00005555555557a2 in func4 ()
++si
+0x00005555555557a7 in func4 ()
++si
+0x00005555555557bc in func4 ()
++info reg esi
+esi            0x7                 7
++kill
+[Inferior 1 (process 26731) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++si
+0x0000555555555785 in func4 ()
++si
+0x0000555555555789 in func4 ()
++si
+0x000055555555578d in func4 ()
++si
+0x000055555555578f in func4 ()
++si
+0x0000555555555791 in func4 ()
++si
+0x0000555555555793 in func4 ()
++si
+0x0000555555555795 in func4 ()
++si
+0x0000555555555798 in func4 ()
++si
+0x000055555555579a in func4 ()
++si
+0x000055555555579c in func4 ()
++si
+0x000055555555579e in func4 ()
++info reg esi
+esi            0x7                 7
++info reg edi
+edi            0xa                 10
++kill
+[Inferior 1 (process 27168) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++ni
+0x00005555555557f9 in phase_4 ()
++ni
+0x00005555555557fb in phase_4 ()
++ni
+0x00005555555557ff in phase_4 ()
++ni
+0x0000555555555806 in phase_4 ()
++ni
+0x000055555555580b in phase_4 ()
++ni
+0x0000555555555810 in phase_4 ()
++ni
+0x0000555555555813 in phase_4 ()
++ni
+0x0000555555555818 in phase_4 ()
++info reg eax
+eax            0x0                 0
++info reg eax
+eax            0x0                 0
++si
+0x000055555555581b in phase_4 ()
++si
+0x0000555555555824 in phase_4 ()
++kill
+[Inferior 1 (process 27400) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++si
+0x0000555555555785 in func4 ()
++si
+0x0000555555555789 in func4 ()
++si
+0x000055555555578d in func4 ()
++si
+0x000055555555578f in func4 ()
++si
+0x0000555555555791 in func4 ()
++si
+0x0000555555555793 in func4 ()
++si
+0x0000555555555795 in func4 ()
++si
+0x0000555555555798 in func4 ()
++si
+0x000055555555579a in func4 ()
++si
+0x000055555555579c in func4 ()
++si
+0x000055555555579e in func4 ()
++info reg eax
+eax            0x0                 0
++kill
+[Inferior 1 (process 28313) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++ni
+0x0000555555555818 in phase_4 ()
++info reg eax
+eax            0x2                 2
++kill
+[Inferior 1 (process 29310) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++ni
+0x0000555555555818 in phase_4 ()
++info reg eax
+eax            0x3                 3
++kill
+[Inferior 1 (process 29423) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555801 in phase_4 ()
++kill
+[Inferior 1 (process 29496) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++ni
+0x0000555555555818 in phase_4 ()
++info reg
+rax            0x3                 3
+rbx            0x7fffffffdfb8      140737488347064
+rcx            0x2                 2
+rdx            0xe                 14
+rsi            0xd                 13
+rdi            0xd                 13
+rbp            0x2                 0x2
+rsp            0x7fffffffde80      0x7fffffffde80
+r8             0x1999999999999999  1844674407370955161
+r9             0x0                 0
+Quit
++info reg eax
+eax            0x3                 3
++kill
+[Inferior 1 (process 29551) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++si
+0x00005555555557ce in phase_4 ()
++si
+0x00005555555557d2 in phase_4 ()
++si
+0x00005555555557db in phase_4 ()
++si
+0x00005555555557e0 in phase_4 ()
++si
+0x00005555555557e2 in phase_4 ()
++si
+0x00005555555557e7 in phase_4 ()
++si
+0x00005555555557ea in phase_4 ()
++si
+0x00005555555557f1 in phase_4 ()
++ni
+0x00005555555557f6 in phase_4 ()
++si
+0x00005555555557f9 in phase_4 ()
++si
+0x00005555555557fb in phase_4 ()
++si
+0x00005555555557ff in phase_4 ()
++si
+0x0000555555555806 in phase_4 ()
++si
+0x000055555555580b in phase_4 ()
++si
+0x0000555555555810 in phase_4 ()
++si
+0x0000555555555813 in phase_4 ()
++ni
+0x0000555555555818 in phase_4 ()
++info reg eax
+eax            0x3                 3
++kill
+[Inferior 1 (process 29678) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++continue
+Continuing.
+
+Breakpoint 1, 0x0000555555555dde in explode_bomb ()
++kill
+[Inferior 1 (process 30426) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++continue
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 30487) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x00005555555557ca in phase_4 ()
++continue
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++quit
+Not confirmed.
++kill
+[Inferior 1 (process 30551) killed]
++quit
+Reading symbols from bomb...
++layout asm
++x /10wx 0x31e0
+0x31e0 <array.0>:	0x00000002	0x0000000a	0x00000006	0x00000001
+0x31f0 <array.0+16>:	0x0000000c	0x00000010	0x00000009	0x00000003
+0x3200 <array.0+32>:	0x00000004	0x00000007
++x /15wx 0x31e0
+0x31e0 <array.0>:	0x00000002	0x0000000a	0x00000006	0x00000001
+0x31f0 <array.0+16>:	0x0000000c	0x00000010	0x00000009	0x00000003
+0x3200 <array.0+32>:	0x00000004	0x00000007	0x0000000e	0x00000005
+0x3210 <array.0+48>:	0x0000000b	0x00000008	0x0000000f
++x /20wx 0x31e0
+0x31e0 <array.0>:	0x00000002	0x0000000a	0x00000006	0x00000001
+0x31f0 <array.0+16>:	0x0000000c	0x00000010	0x00000009	0x00000003
+0x3200 <array.0+32>:	0x00000004	0x00000007	0x0000000e	0x00000005
+0x3210 <array.0+48>:	0x0000000b	0x00000008	0x0000000f	0x0000000d
+0x3220:	0x79206f53	0x7420756f	0x6b6e6968	0x756f7920
++info break
+No breakpoints or watchpoints.
++break explode_bomb
+Breakpoint 1 at 0x1dde
++break phase_5
+Breakpoint 2 at 0x1843
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x0000555555555843 in phase_5 ()
++refresh
++si
+0x0000555555555847 in phase_5 ()
++si
+0x0000555555555848 in phase_5 ()
++si
+0x000055555555584b in phase_5 ()
++si
+0x0000555555555ae4 in string_length ()
++kill
+[Inferior 1 (process 31629) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 2, 0x0000555555555843 in phase_5 ()
++refresh
++si
+0x0000555555555847 in phase_5 ()
++si
+0x0000555555555848 in phase_5 ()
++si
+0x000055555555584b in phase_5 ()
++ni
+0x0000555555555850 in phase_5 ()
++si
+0x0000555555555853 in phase_5 ()
++si
+0x0000555555555855 in phase_5 ()
++si
+0x0000555555555858 in phase_5 ()
++si
+0x000055555555585c in phase_5 ()
++si
+0x0000555555555861 in phase_5 ()
++si
+0x0000555555555868 in phase_5 ()
++si
+0x000055555555586b in phase_5 ()
++si
+0x000055555555586e in phase_5 ()
++si
+0x0000555555555871 in phase_5 ()
++si
+0x0000555555555875 in phase_5 ()
++si
+0x0000555555555878 in phase_5 ()
++si
+0x0000555555555868 in phase_5 ()
++si
+0x000055555555586b in phase_5 ()
++si
+0x000055555555586e in phase_5 ()
++si
+0x0000555555555871 in phase_5 ()
++si
+0x0000555555555875 in phase_5 ()
++si
+0x0000555555555878 in phase_5 ()
++si
+0x0000555555555868 in phase_5 ()
++si
+0x000055555555586b in phase_5 ()
++si
+0x000055555555586e in phase_5 ()
++si
+0x0000555555555871 in phase_5 ()
++si
+0x0000555555555875 in phase_5 ()
++si
+0x0000555555555878 in phase_5 ()
++si
+0x0000555555555868 in phase_5 ()
++si
+0x000055555555586b in phase_5 ()
++si
+0x000055555555586e in phase_5 ()
++si
+0x0000555555555871 in phase_5 ()
++si
+0x0000555555555875 in phase_5 ()
++si
+0x0000555555555878 in phase_5 ()
++si
+0x0000555555555868 in phase_5 ()
++si
+0x000055555555586b in phase_5 ()
++si
+0x000055555555586e in phase_5 ()
++si
+0x0000555555555871 in phase_5 ()
++si
+0x0000555555555875 in phase_5 ()
++si
+0x0000555555555878 in phase_5 ()
++si
+0x0000555555555868 in phase_5 ()
++si
+0x000055555555586b in phase_5 ()
++si
+0x000055555555586e in phase_5 ()
++si
+0x0000555555555871 in phase_5 ()
++si
+0x0000555555555875 in phase_5 ()
++si
+0x0000555555555878 in phase_5 ()
++si
+0x000055555555587a in phase_5 ()
++info reg ecx
+ecx            0x2b                43
++continue
+Continuing.
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 31731) killed]
++refresh
++quit
+Reading symbols from bomb...
++layout asm
++x /20wx 0x5230
+0x5230 <node1>:	0x000002e2	0x00000001	0x00005240	0x00000000
+0x5240 <node2>:	0x000001ee	0x00000002	0x00005250	0x00000000
+0x5250 <node3>:	0x00000048	0x00000003	0x00005260	0x00000000
+0x5260 <node4>:	0x00000392	0x00000004	0x00005270	0x00000000
+0x5270 <node5>:	0x000002b0	0x00000005	0x00005110	0x00000000
++x /24wx 0x5230
+0x5230 <node1>:	0x000002e2	0x00000001	0x00005240	0x00000000
+0x5240 <node2>:	0x000001ee	0x00000002	0x00005250	0x00000000
+0x5250 <node3>:	0x00000048	0x00000003	0x00005260	0x00000000
+0x5260 <node4>:	0x00000392	0x00000004	0x00005270	0x00000000
+0x5270 <node5>:	0x000002b0	0x00000005	0x00005110	0x00000000
+0x5280 <host_table>:	0x00003467	0x00000000	0x00000000	0x00000000
++x /24w 0x5230
+0x5230 <node1>:	0x000002e2	0x00000001	0x00005240	0x00000000
+0x5240 <node2>:	0x000001ee	0x00000002	0x00005250	0x00000000
+0x5250 <node3>:	0x00000048	0x00000003	0x00005260	0x00000000
+0x5260 <node4>:	0x00000392	0x00000004	0x00005270	0x00000000
+0x5270 <node5>:	0x000002b0	0x00000005	0x00005110	0x00000000
+0x5280 <host_table>:	0x00003467	0x00000000	0x00000000	0x00000000
++x /24x 0x5230
+0x5230 <node1>:	0x000002e2	0x00000001	0x00005240	0x00000000
+0x5240 <node2>:	0x000001ee	0x00000002	0x00005250	0x00000000
+0x5250 <node3>:	0x00000048	0x00000003	0x00005260	0x00000000
+0x5260 <node4>:	0x00000392	0x00000004	0x00005270	0x00000000
+0x5270 <node5>:	0x000002b0	0x00000005	0x00005110	0x00000000
+0x5280 <host_table>:	0x00003467	0x00000000	0x00000000	0x00000000
++x /24wd 0x5230
+0x5230 <node1>:	738	1	21056	0
+0x5240 <node2>:	494	2	21072	0
+0x5250 <node3>:	72	3	21088	0
+0x5260 <node4>:	914	4	21104	0
+0x5270 <node5>:	688	5	20752	0
+0x5280 <host_table>:	13415	0	0	0
++x /24x 0x5230
+0x5230 <node1>:	0x000002e2	0x00000001	0x00005240	0x00000000
+0x5240 <node2>:	0x000001ee	0x00000002	0x00005250	0x00000000
+0x5250 <node3>:	0x00000048	0x00000003	0x00005260	0x00000000
+0x5260 <node4>:	0x00000392	0x00000004	0x00005270	0x00000000
+0x5270 <node5>:	0x000002b0	0x00000005	0x00005110	0x00000000
+0x5280 <host_table>:	0x00003467	0x00000000	0x00000000	0x00000000
++x /4w 0x5110
+0x5110 <node6>:	0x00000266	0x00000006	0x00000000	0x00000000
++x /4wd 0x5110
+0x5110 <node6>:	614	6	0	0
++info break
+No breakpoints or watchpoints.
++break explode_bomb
+Breakpoint 1 at 0x1dde
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, 0x0000555555555dde in explode_bomb ()
++kill
+[Inferior 1 (process 32733) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 343) exited normally]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, 0x0000555555555dde in explode_bomb ()
++kill
+[Inferior 1 (process 395) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 432) exited normally]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 487) exited normally]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff7e9f992 in __GI___libc_read (fd=0, buf=0x55555555b1d0, nbytes=1024) at ../sysdeps/unix/sysv/linux/read.c:26
++kill
+[Inferior 1 (process 509) killed]
++quit
+Reading symbols from bomb...
++layout asm
++x /wx 0x5150
+0x5150 <n1>:	0x00000024
++x /50wx 0x5150
+0x5150 <n1>:	0x00000024	0x00000000	0x00005170	0x00000000
+0x5160 <n1+16>:	0x00005190	0x00000000	0x00000000	0x00000000
+0x5170 <n21>:	0x00000008	0x00000000	0x000051f0	0x00000000
+0x5180 <n21+16>:	0x000051b0	0x00000000	0x00000000	0x00000000
+0x5190 <n22>:	0x00000032	0x00000000	0x000051d0	0x00000000
+0x51a0 <n22+16>:	0x00005210	0x00000000	0x00000000	0x00000000
+0x51b0 <n32>:	0x00000016	0x00000000	0x000050b0	0x00000000
+0x51c0 <n32+16>:	0x00005070	0x00000000	0x00000000	0x00000000Quit
++info break
+No breakpoints or watchpoints.
++break explode_bomb
+Breakpoint 1 at 0x1dde
++run ans 
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, 0x0000555555555dde in explode_bomb ()
++kill
+[Inferior 1 (process 2010) killed]
++run ans
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb ans
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 2089) exited normally]
