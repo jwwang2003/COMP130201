@@ -1128,3 +1128,5 @@ Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab2bomb/bomb62/bomb a
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
 [Inferior 1 (process 2089) exited normally]
+Quit
++quit
