@@ -1,0 +1,15 @@
+rtartget: No such file or directory.
++layout src
++layout asm
++run -i exploit-raw.txt -q
+Starting program:  -i exploit-raw.txt -q
+No executable file specified.
+Use the "file" or "exec-file" command.
++quit
+Reading symbols from rtarget...
++run -i exploit-raw.txt -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/target139/rtarget -i exploit-raw.txt -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 447) exited normally]
++quit

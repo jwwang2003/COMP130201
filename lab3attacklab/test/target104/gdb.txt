@@ -1,0 +1,696 @@
+Reading symbols from ctarget...
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7e00150 in __vfprintf_internal (s=0x7ffff7fa5780 <_IO_2_1_stdout_>, format=0x403024 "Type string:", ap=ap@entry=0x55677fc8, mode_flags=mode_flags@entry=2) at ./stdio-common/vfprintf-internal.c:1244
++layout asm
++quit
+Not confirmed.
++kill
+[Inferior 1 (process 2666) killed]
++break getbuf
+Note: breakpoint 1 also set at pc 0x401670.
+Breakpoint 2 at 0x401670: file buf.c, line 12.
++run -i raw
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++info r rsp
+rsp            0x55678090          0x55678090
++quit
+Reading symbols from ctarget...
++layout asm
++run -i raw
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000055678095 in ?? ()
++si
+seghandler (sig=11) at support.c:244
++quit
+Not confirmed.
++kill
+[Inferior 1 (process 2963) killed]
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678090 in ?? ()
+Quit
++quit
+Reading symbols from ctarget...
++layout asm
++run -i raw
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 3257) exited normally]
++kill
+The program is not being run.
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch2 (val=1309058823) at visible.c:40
++si
++si
++si
++si
++si
+printf (__fmt=0x402e58 "Touch2!: You called touch2(0x%.8x)\n") at /usr/include/x86_64-linux-gnu/bits/stdio2.h:104
++si
++si
++si
++ni
+touch2 (val=<optimized out>) at visible.c:44
++quit
+Reading symbols from ctarget...
++lyaout asm
+Undefined command: "lyaout".  Try "help".
++layout asm
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++nis
+Undefined command: "nis".  Try "help".
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x4e06a707 <error: Cannot access memory at address 0x4e06a707>) at visible.c:71
++si
++si
++si
++si
++si
++ni
+
+Program received signal SIGSEGV, Segmentation fault.
+__strncmp_avx2 () at ../sysdeps/x86_64/multiarch/strcmp-avx2.S:799
++si
+seghandler (sig=11) at support.c:244
++kill
+[Inferior 1 (process 3850) killed]
++run
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x4e06a707 <error: Cannot access memory at address 0x4e06a707>) at visible.c:71
++si
++si
++si
++si
++si
++ni
+
+Program received signal SIGSEGV, Segmentation fault.
+__strncmp_avx2 () at ../sysdeps/x86_64/multiarch/strcmp-avx2.S:799
++kill
+[Inferior 1 (process 4126) killed]
++run
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x4e06a707 <error: Cannot access memory at address 0x4e06a707>) at visible.c:71
++si
++info rsp
+Undefined info command: "rsp".  Try "help info".
++info r rsp
+rsp            0x55678090          0x55678090
++info r rdi
+rdi            0x4e06a707          1309058823
++info r rdi
+rdi            0x4e06a707          1309058823
++si
++si
++si
++si
++si
+hexmatch (val=1309058823, sval=sval@entry=0x4e06a707 <error: Cannot access memory at address 0x4e06a707>) at visible.c:62
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
+0x0000000000400ce0 in random@plt ()
++si
+__random () at ./stdlib/random.c:288
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
+__random_r (buf=buf@entry=0x7ffff7fa4860 <unsafe_state>, result=result@entry=0x55677fd4) at ./stdlib/random_r.c:354
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
+__random () at ./stdlib/random.c:295
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
+0x0000000000401734 in hexmatch (val=1309058823, sval=sval@entry=0x4e06a707 <error: Cannot access memory at address 0x4e06a707>) at visible.c:65
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++refrehs
+Undefined command: "refrehs".  Try "help".
++refresh
++ni
+sprintf (__fmt=0x402e50 "%.8x", __s=0x55677ff7 "") at /usr/include/x86_64-linux-gnu/bits/stdio2.h:33
++ni
++s
+___sprintf_chk (s=s@entry=0x55677ff7 "", flag=flag@entry=1, slen=slen@entry=18446744073709551615, format=format@entry=0x402e50 "%.8x") at ./debug/sprintf_chk.c:25
++s
++s
++s
++s
++s
+__vsprintf_internal (string=string@entry=0x55677ff7 "", maxlen=maxlen@entry=18446744073709551615, format=0x402e50 "%.8x", args=args@entry=0x55677f10, mode_flags=mode_flags@entry=6) at ./libio/iovsprintf.c:72
++s
++s
++s
+_IO_no_init (fp=fp@entry=0x55677dd0, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at ./libio/genops.c:563
++s
++s
+_IO_old_init (fp=fp@entry=0x55677dd0, flags=flags@entry=32768) at ./libio/genops.c:531
++s
++s
++s
++s
++s
+_IO_no_init (fp=fp@entry=0x55677dd0, flags=flags@entry=32768, orientation=orientation@entry=-1, wd=wd@entry=0x0, jmp=jmp@entry=0x0) at ./libio/genops.c:565
++s
++kill
+[Inferior 1 (process 4220) killed]
++kill
+The program is not being run.
++y
+Undefined command: "y".  Try "help".
++quit
+Reading symbols from ctarget...
++layout asm
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x55678078 "") at visible.c:71
++si
++si
++si
++si
++si
++ni
++info r eax
+eax            0x0                 0
++quit
+Reading symbols from ctarget...
++layout asm
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[Inferior 1 (process 4940) exited normally]
++refresh
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++ni
++ni
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x55678078 "") at visible.c:71
++info r rsp
+rsp            0x55678098          0x55678098
++x /10wx 0x55678098
+0x55678098:	0x61373037	0x34653036	0x00401d00	0x00000000
+0x556780a8:	0x00000000	0x00000000	0xf4f4f4f4	0xf4f4f4f4
+0x556780b8:	0xf4f4f4f4	0xf4f4f4f4
++si
++si
++si
++si
++si
++info r rsp
+rsp            0x55678090          0x55678090
++x /10wx 0x55678089
+0x55678089:	0x00000000	0x00000000	0x00555860	0x37000000
+0x55678099:	0x36613730	0x00346530	0x0000401d	0x00000000
+0x556780a9:	0x00000000	0xf4000000
++x /10wx 0x55678090
+0x55678090:	0x55586000	0x00000000	0x61373037	0x34653036
+0x556780a0:	0x00401d00	0x00000000	0x00000000	0x00000000
+0x556780b0:	0xf4f4f4f4	0xf4f4f4f4
++info r rsp
+rsp            0x55678090          0x55678090
++x /10wx 0x55678090
+0x55678090:	0x55586000	0x00000000	0x61373037	0x34653036
+0x556780a0:	0x00401d00	0x00000000	0x00000000	0x00000000
+0x556780b0:	0xf4f4f4f4	0xf4f4f4f4
++si
+hexmatch (val=1309058823, sval=sval@entry=0x55678078 "") at visible.c:62
++si
++si
++si
++si
++info r rsp
+rsp            0x55677ff0          0x55677ff0
++info r rsp
+rsp            0x55677ff0          0x55677ff0
++si
++si
++si
++si
++si
++ni
++info r rax
+rax            0x2d058987          755337607
++info r rsp
+rsp            0x55677ff0          0x55677ff0
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
++si
+sprintf (__fmt=0x402e50 "%.8x", __s=0x55677ff7 "") at /usr/include/x86_64-linux-gnu/bits/stdio2.h:33
++si
++si
++si
++si
++si
++si
++si
+0x0000000000400d90 in __sprintf_chk@plt ()
++kill
+[Inferior 1 (process 5012) killed]
++run
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++info r rdi
+rdi            0x55678078          1432846456
++info r rsp
+rsp            0x55678098          0x55678098
++is
+Undefined command: "is".  Try "help".
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x55678078 "") at visible.c:71
++info r rsp
+rsp            0x55678098          0x55678098
++si
++si
++info r rsp
+rsp            0x55678090          0x55678090
++x /10ex 0x55678090
+0x55678090:	0x55586000	0x00000000	0x61373037	0x34653036
+0x556780a0:	0x00401d00	0x00000000	0x00000000	0x00000000
+0x556780b0:	0xf4f4f4f4	0xf4f4f4f4
++quit
+Reading symbols from ctarget...
++layout asm
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/ctarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x0000000055678058 in ?? ()
++si
+0x000000005567805f in ?? ()
++si
+0x0000000055678064 in ?? ()
++si
+touch3 (sval=0x55678098 "707a60e4") at visible.c:71
++info r rdi
+rdi            0x55678098          1432846488
++si
++si
++si
++si
++si
++ni
++info r eax
+eax            0x0                 0
++quit
+Reading symbols from rtarget...
++layout asm
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/rtarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000007a7064e0000 in ?? ()
++refresh
++kill
+[Inferior 1 (process 8109) killed]
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/rtarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x000007a7064e0000 in ?? ()
++si
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000007a7064e0000 in ?? ()
++quit
+Please answer y or n.
+Reading symbols from rtarget...
++layout asm
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/rtarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x000000000040186a in getval_140 ()
++si
+0x000000000040186b in getval_140 ()
++si
+0x0000000000401862 in setval_123 ()
++si
+0x0000000000401865 in setval_123 ()
++si
+touch2 (val=128386638) at visible.c:40
++si
++si
++si
++si
++si
+printf (__fmt=0x402fa0 "Misfire: You called touch2(0x%.8x)\n") at /usr/include/x86_64-linux-gnu/bits/stdio2.h:104
++kill
+Please answer y or n.
+Please answer y or n.
+Please answer y or n.
+[Inferior 1 (process 8334) killed]
++quit
+Reading symbols from rtarget...
++layout asm
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/rtarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++is
+Undefined command: "is".  Try "help".
++si
++si
++ni
++si
++si
++si
+0x000000000040186a in getval_140 ()
++si
+0x000000000040186b in getval_140 ()
++si
+0x000000004e06a707 in ?? ()
++si
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000000004e06a707 in ?? ()
++quit
+Reading symbols from rtarget...
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++layout asm
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/rtarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x000000000040186a in getval_140 ()
++si
+0x000000000040186b in getval_140 ()
++si
+0x0000000000401862 in setval_123 ()
++si
+0x0000000000401865 in setval_123 ()
++si
+touch2 (val=1309058823) at visible.c:40
++info r rdi
+rdi            0x4e06a707          1309058823
++si
++si
++si
++si
++si
+printf (__fmt=0x402f78 "Touch2!: You called touch2(0x%.8x)\n") at /usr/include/x86_64-linux-gnu/bits/stdio2.h:104
++si
++quit
+Reading symbols from rtarget...
++layout asm
++break getbuf
+Breakpoint 1 at 0x401670: file buf.c, line 12.
++run -i raw -q
+Starting program: /mnt/c/Users/jwwan/Documents/COMP130201/lab3attacklab/test/target104/rtarget -i raw -q
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, getbuf () at buf.c:12
++si
++si
++ni
++si
++si
++si
+0x000000000040186a in getval_140 ()
++info r rsp
+rsp            0x7ffffff84db0      0x7ffffff84db0
++x /20wx 0x7fffffff84d0
+0x7fffffff84d0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff84e0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff84f0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff8500:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff8510:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
++x /20wx 0x7fffffff84b0
+0x7fffffff84b0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff84c0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff84d0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff84e0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
+0x7fffffff84f0:	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4	0xf4f4f4f4
++si
+0x000000000040186b in getval_140 ()
++si
+0x0000000000401862 in setval_123 ()
++si
+0x0000000000401865 in setval_123 ()
++si
+touch2 (val=1309058823) at visible.c:40
++quit
